@@ -12,21 +12,12 @@
     @endsection
 
 
-
     @section('content')
 
-    @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
-
-
-        <a href="{{ route('cats.create') }}" class="btn-btn-outline-info"> Create</a>
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Category Table</h3>
+                    <h3 class="card-title">archive Category Table</h3>
                     <div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 1000px;">
 
@@ -65,14 +56,8 @@
                                     </td>
 
                                     <td>{{ $cat->created_at }}</td>
-                                    <td>
-                                        <a href="{{ route('cats.edit', $cat->id) }}" class="btn btn-outline-info"> update
 
-                                        </a>
-
-                                    </td>
-                                    <td>
-
+                            
                                     <td>
                                         <form method="POST" action="{{ route('cats.destroy', $cat->id) }}">
                                             @csrf
