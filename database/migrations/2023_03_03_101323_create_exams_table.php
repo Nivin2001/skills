@@ -18,8 +18,9 @@ return new class extends Migration
             $table->string('img');
             $table->tinyinteger('question_no');
             $table->tinyinteger('diffculty');
-            
-            
+            $table->smallInteger('duration_mints');
+
+
             $table->boolean('active')->default(true);
             $table->foreignId('skill_id')->constrained()
             ->onDelete('cascade')->onupdate('cascade');

@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('_exam_user', function (Blueprint $table) {
+        Schema::create('exam_user', function (Blueprint $table) {
             $table->id();
-            $table->float('score');
-            $table->smallinteger('time_mins');
-            $table->enum('status',['open','closed']);
-            
+            $table->float('score')->nullable();
+            $table->smallinteger('time_mins')->nullable();
+            $table->enum('status',['open','closed'])->default('closed');
+
             $table->foreignId('user_id')->constrained()
             ->onDelete('cascade')->onupdate('cascade');
 
-            
+
             $table->foreignId('exam_id')->constrained()
             ->onDelete('cascade')->onupdate('cascade');
             $table->timestamps();

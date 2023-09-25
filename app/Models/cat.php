@@ -10,4 +10,9 @@ class cat extends Model
 {
     use HasFactory ,SoftDeletes;
     protected $fillable=['name','active'];
+
+    public function skills()
+    {
+        return $this->hasMany(Skill::class);
+    }
 }

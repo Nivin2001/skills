@@ -19,13 +19,23 @@
         <h3 class="card-title">New Category</h3>
         </div>
 
+        @if ($errors->any())
+        <div class="alert alert-danger mt-2">
+        @foreach ($errors->all() as $error)
+
+            {{ $error }}
+        </div>
+        @endforeach
+    @endif
+
+
 
         <form method="POST" action="{{route('cats.store')}}">
             @csrf
         <div class="card-body">
         <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" name="name" class="form-control" id="name" placeholder="Enter Category Name">
+        <input type="text" name="name" value="{{old('name')}}" class="form-control" id="name" placeholder="Enter Category Name">
         </div>
         <div class="col-sm-6">
 

@@ -175,7 +175,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="{{asset('admin/assets//img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{Auth::user()->name}}</a>
+          {{-- <a href="#" class="d-block">{{Auth::user()->name}}</a> --}}
         </div>
       </div>
 
@@ -217,6 +217,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <a href="{{ route ('cats.create')}}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{ route ('cats.archive')}}" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Archive</p>
                 </a>
               </li>
             </ul>

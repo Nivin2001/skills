@@ -36,7 +36,7 @@
                                 <th>Name</th>
                                 <th>Status</th>
                                 <th>Created_at</th>
-                                <th colspan="2" class="text-center">Action</th>
+                                <th colspan="2" >Action</th>
 
                             </tr>
                         </thead>
@@ -57,14 +57,22 @@
 
                                     <td>{{ $cat->created_at }}</td>
 
-                            
                                     <td>
-                                        <form method="POST" action="{{ route('cats.destroy', $cat->id) }}">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn-btn-outline-danger">Delete </button>
-                                        </form>
+                                        <a href="{{ route('cats.restore', $cat->id) }}" class="btn btn-outline-info"> Restore
+
+                                        </a>
+
                                     </td>
+
+
+                                    <td>
+                                        <a href="{{ route('cats.force', $cat->id) }}" class="btn btn-outline-danger"> Force Delete
+
+                                        </a>
+
+                                    </td>
+
+                                    
 
                                 </tr>
                             @empty

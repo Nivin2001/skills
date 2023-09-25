@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('option-1');
-            $table->string('option-2');
-            $table->string('option-3');
-            $table->string('option-4');
+            $table->string('option_1');
+            $table->string('option_2');
+            $table->string('option_3');
+            $table->string('option_4');
             $table->tinyinteger('right_ans');
             $table->foreignId('exam_id')->constrained()
             ->onDelete('cascade')->onupdate('cascade');
