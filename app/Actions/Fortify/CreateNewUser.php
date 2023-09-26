@@ -31,14 +31,15 @@ class CreateNewUser implements CreatesNewUsers
             ],
             'password' => $this->passwordRules(),
         ])->validate();
-$studentRole=role::where('name','student')->first();
+
+     $studentRole=role::where('name','student')->first();
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-            'role_id' =>3,
+             'role_id' =>$studentRole->id,
 
         ]);
-        return redirect(route('/'));
+        // return redirect(route('/'));
     }
 }

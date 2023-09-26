@@ -11,6 +11,12 @@
 
 				<!-- row -->
 				<div class="row">
+                    @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                    @endif
+
 
 					<!-- login form -->
 					<div class="col-md-6 col-md-offset-3">

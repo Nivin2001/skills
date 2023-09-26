@@ -18,13 +18,11 @@ use Illuminate\Support\Facades\Route;
 // | be assigned to the "web" middleware group. Make something great!
 // |
 
-Route::get('/',[HomeController::class,'index']);
-
+Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/cat/show/{id}', [CatController::class, 'show'])->name('cat.show');
 Route::get('/skills/show/{id}',[SkillController::class,'show'])->name('skills.show');
 Route::get('exams/start/{id}',[ExamController::class,'start'])->middleware('auth','verified');
 Route::get('exams/submit/{id}',[ExamController::class,'start'])->middleware('auth','verified');
-
 Route::get('/exams/show/{id}',[ExamController::class,'show'])->name('exams.show');
 Route::get('/exams/questions/{id}',[ExamController::class,'questions'])->name('exam.questions');
 
@@ -32,4 +30,4 @@ Route::get('/exams/questions/{id}',[ExamController::class,'questions'])->name('e
 
 // Route::get('/contact/message',[ContactController::class,'send'])->name('contact.store');
 
-// require __DIR__.'/auth.php';
+
