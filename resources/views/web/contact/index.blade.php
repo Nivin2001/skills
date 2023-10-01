@@ -1,6 +1,22 @@
 @extends('web.Layouts.master')
 @section('content')
 
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
 <!-- Hero-area -->
 <div class="hero-area section">
 
@@ -53,8 +69,8 @@
             <div class="col-md-5 col-md-offset-1">
                 <h4>Contact Information</h4>
                 <ul class="contact-details">
-                    <li><i class="fa fa-envelope"></i>Educate@email.com</li>
-                    <li><i class="fa fa-phone"></i>122-547-223-45</li>
+                    <li><i class="fa fa-envelope"></i>{{$setting->email}}</li>
+                    <li><i class="fa fa-phone"></i>{{$setting->phone}}</li>
                 </ul>
 
             </div>

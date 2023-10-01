@@ -1,7 +1,7 @@
 
     <nav id="nav">
         <ul class="main-menu nav navbar-nav navbar-right">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="{{route('home')}}">Home</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -14,7 +14,8 @@
 
                 </ul>
             </li>
-            {{-- <li><a href="{{route('contact.create')}}">Contact</a></li> --}}
+
+            <li><a href="{{route('contact.create')}}">Contact</a></li>
             @guest
             <li><a href="{{url('login')}}">Sign In</a></li>
             <li><a href="{{ url('register') }}">Sign Up</a></li>
@@ -25,6 +26,7 @@
                 <form action="{{url('logout')}}" method="post">
                     @csrf
                     <button class="btn logout-btn">Logout</button>
+                </form>
             </li>
             @endauth
 

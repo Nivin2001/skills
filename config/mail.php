@@ -13,7 +13,9 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'smtp'),
+    // 'default' => env('MAIL_MAILER', 'smtp'),
+    'default' => env('MAIL_MAILER', 'mailhog'),
+
 
     /*
     |--------------------------------------------------------------------------
@@ -44,6 +46,13 @@ return [
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN'),
         ],
+        'mailhog' => [
+            'transport' => 'smtp',
+            'host' => 'localhost', // MailHog SMTP server
+            'port' => 1025,        // MailHog SMTP port
+            'encryption' => null,  // No encryption for MailHog
+        ],
+
 
         'ses' => [
             'transport' => 'ses',

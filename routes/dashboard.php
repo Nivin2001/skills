@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\Dashboard\DashBoardController; // Correct the namespace capitalization
 use App\Http\Controllers\Dashborad\CatsController;
 use Illuminate\Support\Facades\Route;
