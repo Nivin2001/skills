@@ -21,7 +21,10 @@ class Exam extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)
+            ->withPivot('score', 'time_mins', 'status')
+            ->withTimestamps();
     }
+
 
 }

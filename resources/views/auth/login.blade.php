@@ -42,10 +42,11 @@
                             @csrf
                             <input class="input" type="email" name="email" placeholder="Email">
                             <input class="input" type="password" name="password" placeholder="Password">
+                            <hr>
                             <input class="input" type="checkbox" name="remember" > Remembmer me
-                            <button type="submit" class="main-button icon-button pull-right">Sign In</button>
-                        </form>
+
                         <a href={{url('forgot-password')}}>Forget Password ?</a>
+                        <button type="submit" class="main-button icon-button pull-right">Sign In</button>
                     </div>
                 </div>
                 <!-- /login form -->

@@ -1,4 +1,8 @@
 @extends('web.Layouts.master')
+@section('styles')
+<link href="{{ asset('web/assets/css/TimeCircles.css')}}" rel="stylesheet">
+
+@endsection
 @section('content')
 
 <!-- Hero-area -->
@@ -40,6 +44,7 @@
 
             <!-- main blog -->
             <div id="main" class="col-md-9">
+                <form id="exam-submit-form" method="post" action="{{url("exams/submit/$exam->id")}}">
 
                 <!-- blog post -->
                 <div class="blog-post mb-5">
@@ -54,25 +59,25 @@
                             <div class="panel-body">
                                 <div class="radio">
                                     <label>
-                                      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+                                      <input form="exam-submit-form" type="radio" name="answers[{{$question->id}}]" id="optionsRadios1" value="1">
                                       {{$question->option_1}}
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
-                                      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                      <input form="exam-submit-form" type="radio"name="answers[{{$question->id}}]"  id="optionsRadios2" value="2">
                                       {{$question->option_2}}
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
-                                      <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+                                      <input form="exam-submit-form" type="radio" name="answers[{{$question->id}}]"id="optionsRadios3" value="3">
                                       {{$question->option_3}}
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
-                                      <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+                                      <input form="exam-submit-form" type="radio" name="answers[{{$question->id}}]" id="optionsRadios3" value="4">
                                       {{$question->option_4}}
                                     </label>
                                 </div>
@@ -101,7 +106,7 @@
     <ul class="list-group">
         <li class="list-group-item">Skill: {{$exam->skill->name}}</li>
         <li class="list-group-item">Questions: {{$exam->question_no}}</li>
-        <li class="list-group-item">Duration: {{$exam->duration_mints}}mins</li>
+        <li class="list-group-item">Duration: {{$exam->duration_mints}} mins</li>
         <li class="list-group-item">Difficulty:
             @for ($i=1;$i<=$exam->diffculty;$i++)
             <i class="fa fa-star"></i>
@@ -113,7 +118,9 @@
 
     </ul>
     <!-- /exam details widget -->
-
+    <div class="example" data-time="{{$exam->duration_mints *60}}">
+        <!-- Your timer content here -->
+    </div>
 
 
 </div>
@@ -127,6 +134,25 @@
 
 </div>
 <!-- /Blog -->
+
+
+@endsection
+
+@section('scripts')
+<script type="text/javascript" src="{{asset('web/assets/js/TimeCircles.js')}}"></script>
+<script>
+    $(".example").TimeCircles({
+        time: {
+            Days: { show: false },
+        },
+        count_past_zero: false,
+    }).addListener(function(unit, value, total) { // Corrected the syntax here
+        if (total <= 0) {
+            alert("test");
+        }
+    });
+</script>
+
 
 
 @endsection

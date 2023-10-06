@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Exam;
+use Illuminate\Support\Facades\Auth;
 
 class ExamController extends Controller
 {
@@ -13,6 +14,16 @@ class ExamController extends Controller
         $exam=Exam::findOrFail($id);
 
         return view('web.exams.show',compact('exam'));
+
+    }
+
+    public function start($examId)
+    {
+
+        $user=Auth::user();
+        $user->exams()->attach($examId);
+        return $user;
+        return redirect()->name('exam.questions', $examId);
 
     }
 

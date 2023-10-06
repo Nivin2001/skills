@@ -23,13 +23,17 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',[HomeController::class,'index'])->name('home');
-Route::get('/cat/show/{id}', [CatController::class, 'show'])->name('cat.show')->middleware('auth');
+Route::get('/cat/show/{id}', [CatController::class, 'show'])->name('cat.show');
+// ->middleware('auth');
 // ->middleware('verified');
 Route::get('/skills/show/{id}',[SkillController::class,'show'])->name('skills.show');
-Route::get('exams/start/{id}',[ExamController::class,'start'])->middleware('auth','verified');
-Route::get('exams/submit/{id}',[ExamController::class,'start'])->middleware('auth','verified');
 Route::get('/exams/show/{id}',[ExamController::class,'show'])->name('exams.show');
-Route::get('/exams/questions/{id}',[ExamController::class,'questions'])->name('exam.questions');
+Route::post('exams/start/{id}',[ExamController::class,'start'])->name('exam.start')->middleware('auth','student');
+Route::post('exams/submit/{id}',[ExamController::class,'start'])->name('exam.submit')->middleware('auth','verified','student');
+
+
+Route::get('/exams/questions/{id}',[ExamController::class,'questions'])->name('exam.questions')->middleware('auth','student');
+;
 
 Route::get('/contact',[ContactController::class,'index'])->name('contact.create');
 
